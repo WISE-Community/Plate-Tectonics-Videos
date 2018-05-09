@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        var timesToPause = [3, 7, 12];
+        var textRules = [{"startTime":0,"endTime":3,"message":"message 0-3"},{"startTime":6, "endTime":15,"message":"message 6-15"},{"startTime":16,"endTime":64,"message":"message 16-64"}];
+    $(document).ready(function() {
+        var lastTime = 0;
+        $("#video").on("timeupdate", function() {
+            console.log("is playing");
+            var currentTime = $("#video").prop("currentTime");
+            console.log(currentTime);
+            if (needToPause(timesToPause, lastTime, currentTime)) {
+                console.log('pause!');
+                $("#video")[0].pause();
+            }
+            showText(currentTime);
+            lastTime = currentTime;
+        });
+         });
+        function needToPause(timesToPause, lastTime, currentTime) {
+            return timesToPause.filter(function(timeToPause) { return timeToPause > lastTime && timeToPause < currentTime; }).length > 0;
+        }
+    function showText(time) {
+        var messageElement = $("#message");
+        var textRule = getTextRule(time);
+        if (textRule != null) {
+            messageElement.html(textRule.message);
+        } else {
+            messageElement.html("");
+        }
+    }
+    function getTextRule(time) {
+        var matchingTextRules = textRules.filter(function(textRule) { return textRule.startTime < time && textRule.endTime > time; });
+        return matchingTextRules.length > 0 ? matchingTextRules[0] : null;
+    }
+    </script>
+    </head>
+    <body>
+        <div id="message"></div>
+        <video id="video" controls>
+  <source src="pt.mp4" type="video/mp4">
+</video>
+    </body>
+</html>
