@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script>
+            var videoObjects = [{
+                id: "continentalOceanic",
+                name: "Continental Oceanic",
+                timesToPause: [21, 31, 36],
+                src: "continental-oceanic.mp4"
+            },{
+                id: "oceanicOceanic",
+                name: "Oceanic Oceanic",
+                timesToPause: [24, 34, 43],
+                src: "oceanic-oceanic.mp4"
+            },{
+                id: "continentalContinentalTransform",
+                name: "Continental Continental",
+                timesToPause: [9, 15],
+                src: "continental-continental-transform.mp4"
+            },{
+                id: "continentalContinentalConvergent",
+                name: "Continental Continental",
+                timesToPause: [12, 19],
+                src: "continental-continental-convergent.mp4"
+            }];
+        </script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div id="videoChoices">
+            <div>
+                <h4>Convergent</h4>
+                <div id="continentalOceanic" class="videoChoice">Continental Oceanic</div>
+                <div id="continentalContinentalConvergent" class="videoChoice">Continental Continental</div>
+            </div>
+            <div>
+                <h4>Divergent</h4>
+                <div id="oceanicOceanic" class="videoChoice">Oceanic Oceanic</div>
+            </div>
+            <div>
+                <h4>Transform</h4>
+                <div id="continentalContinentalTransform" class="videoChoice">Continental Continental</div>
+            </div>
+        </div>
+        <div id="videoDiv">
+            <div id="noVideoMessage">
+                <div>
+                    Click on a plate boundary above. <br/>A video will appear here.
+                </div>
+            </div>
+            <video id="video" controls muted="muted">
+               <source id="videoSource" src="" type="video/mp4">
+            </video>
+            <div id="message"></div>
+        </div>
+    </body>
+</html>
