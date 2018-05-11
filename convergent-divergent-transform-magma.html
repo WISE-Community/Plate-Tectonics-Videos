@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script src="jquery-3.3.1.min.js"></script>
+        <script>
+            var videoObjects = [{
+                id: "volcanoes",
+                name: "Volcanoes",
+                timesToPause: [19, 25, 31],
+                src: "volcanoes.mp4"
+            },{
+                id: "mountains",
+                name: "mountains",
+                timesToPause: [10, 15],
+                src: "mountains.mp4"
+            },{
+                id: "sea-floor-spread",
+                name: "Sea Floor Spread",
+                timesToPause: [20, 29, 38],
+                src: "sea-floor-spread.mp4"
+            },{
+                id: "earthquakes",
+                name: "Earthquakes",
+                timesToPause: [9, 13, 18],
+                src: "earthquakes.mp4"
+            }];
+        </script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div id="videoChoices">
+            <div>
+                <h4>Convergent</h4>
+                <div id="volcanoes" class="videoChoice">Volcanoes</div>
+                <div id="mountains" class="videoChoice">Mountains</div>
+            </div>
+            <div>
+                <h4>Divergent</h4>
+                <div id="sea-floor-spread" class="videoChoice">Sea Floor Spread</div>
+            </div>
+            <div>
+                <h4>Transform</h4>
+                <div id="earthquakes" class="videoChoice">Earthquakes</div>
+            </div>
+        </div>
+        <div id="videoDiv">
+            <div id="noVideoMessage">
+                <div>
+                    Click on a plate boundary above. <br/>A video will appear here.
+                </div>
+            </div>
+            <video id="video" controls muted="muted">
+               <source id="videoSource" src="" type="video/mp4">
+            </video>
+            <div id="message"></div>
+        </div>
+    </body>
+</html>
